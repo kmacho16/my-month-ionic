@@ -1,0 +1,7 @@
+{
+  "name": "my-month",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
