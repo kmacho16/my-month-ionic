@@ -1,20 +1,35 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCol, IonGrid, IonRow } from "@ionic/react";
 import React, { FC } from "react";
+import { useHistory } from "react-router";
 import ResumeItem from "../../interface/resumeItem.interface";
 
-const ResumeComponent: FC<{item:ResumeItem}> = ({item}) => {
+const ResumeComponent: FC<{ item: ResumeItem }> = ({ item }) => {
+    const history = useHistory();
+
+    const formatterPeso = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+    })
+
+    const redirectAdd = () => {
+        history.push('/detail');
+    }
+
     return (
         <>
-            <IonCard>
+            <IonCard onClick={() => {
+                redirectAdd();
+            }}>
                 <IonCardHeader color="success" style={{ fontWeight: "bold" }}>
                     {item.month}
-                    <span style={{ float: "right" }}> Disponible {item.balance}</span>
+                    <span style={{ float: "right" }}> Disponible {formatterPeso.format(item.balance)}</span>
                 </IonCardHeader>
                 <IonCardContent>
                     <IonGrid>
                         <IonRow>
                             <IonCol>Gastos</IonCol>
-                            <IonCol>{item.balance}</IonCol>
+                            <IonCol>{formatterPeso.format(item.balance)}</IonCol>
                         </IonRow>
                     </IonGrid>
                 </IonCardContent>

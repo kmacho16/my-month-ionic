@@ -5,7 +5,6 @@ import ResumeItem from "../../interface/resumeItem.interface";
 
 const ListResume: FC<{ items: ResumeItem[] }> = ({items}) => {
     const [mItems, setmItems] = useState(items);
-    const array = Array.from(Array(100).keys());
 
     return (
         <>

@@ -1,0 +1,17 @@
+.title {
+    text-align: center;
+    background-color: #cbcbcb;
+    padding: 0.6rem;
+    margin-bottom: 20px;
+
+}
+.title span{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.title .back{
+    float: left;
+    height: 22px;
+    cursor: pointer;
+}
