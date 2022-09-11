@@ -89,7 +89,7 @@ const Add: FC<any> = () => {
     return (
         <IonPage>
             <IonContent>
-                <Title title="agregar periodo" back={true}/>
+                <Title title="agregar periodo" back={true} />
                 <br />
                 <IonRow>
                     <IonCol size="10" class={styles.select}>

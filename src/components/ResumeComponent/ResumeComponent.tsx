@@ -13,7 +13,7 @@ const ResumeComponent: FC<{ item: ResumeItem }> = ({ item }) => {
     })
 
     const redirectAdd = () => {
-        history.push('/detail');
+        history.push(`/detail/${item.id}`);
     }
 
     return (

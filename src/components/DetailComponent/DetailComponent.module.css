@@ -1,0 +1,24 @@
+.ocio {
+    background-color: brown;
+    color: white;
+
+}
+
+.obligaciones {
+    background-color:blue;
+    color: white;
+}
+
+.hogar {
+    background-color: rgb(89, 223, 71);
+}
+
+.mercado {
+    background-color: rgb(108, 0, 0);
+    color: white;
+
+}
+
+.otros {
+    background-color: rgb(255, 66, 201);
+}
