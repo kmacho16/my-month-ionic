@@ -23,13 +23,13 @@ const ResumeComponent: FC<{ item: ResumeItem }> = ({ item }) => {
             }}>
                 <IonCardHeader color="success" style={{ fontWeight: "bold" }}>
                     {item.month}
-                    <span style={{ float: "right" }}> Disponible {formatterPeso.format(item.balance)}</span>
+                    <span style={{ float: "right" }}> Disponible {formatterPeso.format((item.balance-item.expenses))}</span>
                 </IonCardHeader>
                 <IonCardContent>
                     <IonGrid>
                         <IonRow>
                             <IonCol>Gastos</IonCol>
-                            <IonCol>{formatterPeso.format(item.balance)}</IonCol>
+                            <IonCol>{formatterPeso.format(item.expenses)}</IonCol>
                         </IonRow>
                     </IonGrid>
                 </IonCardContent>

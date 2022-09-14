@@ -23,28 +23,32 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Add from './pages/add/Add';
 import Detail from './pages/detail/Detail';
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/add">
-          <Add />
-        </Route>
-        <Route exact path="/detail/:id">
-          <Detail />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+  <Provider store={store} >
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route exact path="/add">
+            <Add />
+          </Route>
+          <Route exact path="/detail/:id">
+            <Detail />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  </Provider>
 );
 
 export default App;

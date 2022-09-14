@@ -1,10 +1,14 @@
 import { IonButton, IonCard, IonCardContent, IonContent, IonIcon, IonItem, IonLabel, IonList } from "@ionic/react";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import ResumeComponent from "../ResumeComponent/ResumeComponent";
 import ResumeItem from "../../interface/resumeItem.interface";
 
 const ListResume: FC<{ items: ResumeItem[] }> = ({items}) => {
     const [mItems, setmItems] = useState(items);
+
+    useEffect(()=>{
+        setmItems(items)
+    },[items])
 
     return (
         <>
@@ -16,7 +20,7 @@ const ListResume: FC<{ items: ResumeItem[] }> = ({items}) => {
                 onIonScrollEnd={() => { }}>
                 <IonList>
                     {mItems.map((item:ResumeItem) => (
-                        <ResumeComponent item={item}/>                        
+                        <ResumeComponent key={item.id} item={item}/>                        
                     ))}
                 </IonList>
             </IonContent>
