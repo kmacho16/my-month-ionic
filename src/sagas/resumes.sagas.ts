@@ -8,8 +8,6 @@ function* onGetAll(){
     try{
         const {Items} =  yield call(getAll);
         const list:ResumeItem[] = [];
-        console.log("aaa", Items);
-
         Items.map((item:any) =>{
             let newItem: ResumeItem = {
                 id : item._id,

@@ -11,6 +11,8 @@
 
 .hogar {
     background-color: rgb(89, 223, 71);
+    color: rgb(0, 0, 0);
+
 }
 
 .mercado {
@@ -21,4 +23,12 @@
 
 .otros {
     background-color: rgb(255, 66, 201);
+}
+
+.precio {
+    font-size: 15px;
+    font-weight: bold;
+}
+.descripcion {
+    font-size: 10px;
 }

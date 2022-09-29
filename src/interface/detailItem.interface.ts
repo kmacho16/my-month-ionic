@@ -3,6 +3,6 @@ export default interface DetailItem {
     categoria: string;
     titulo: string;
     valor: number;
-    fecha: Date;
+    fecha: string;
     descripcion?:string;
 }

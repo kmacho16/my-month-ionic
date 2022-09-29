@@ -5,37 +5,17 @@ import { useParams } from "react-router";
 import DetailItem from "../../interface/detailItem.interface";
 import DetaillComponent from "../DetailComponent/DetailComponent";
 
-const ListDetail: FC<any> = () => {
-    const [expenses, setExpenses] = useState<DetailItem[]>(
-        [
-            {
-                id:'01',
-                categoria: 'ocio',
-                valor: 200,
-                fecha: new Date(),
-                titulo: 'Retiro'
-            },
-            {
-                id:'02',
-                categoria: 'obligaciones',
-                valor: 30000,
-                fecha: new Date(),
-                titulo: 'Mueble cocina'
-            },
-            {
-                id:'03',
-                categoria: 'mercado',
-                valor: 500000,
-                fecha: new Date(),
-                titulo: 'Credito'
-            }
-        ]
-    )
+
+
+const ListDetail: FC<{items:DetailItem[]}> = ({items}) => {
+    const [expenses, setExpenses] = useState<DetailItem[]>([]);
+
+
 
     return (
         <>
-        {expenses.map(item=>(
-            <DetaillComponent item={item} />
+        {items.map(item=>(
+            <DetaillComponent key={item.id} item={item} />
         ))}
         
         </>);

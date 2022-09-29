@@ -3,19 +3,23 @@ import resumesSlice from './state/resumes.slice'
 import createSagaMiddleware from 'redux-saga'
 import { all } from 'redux-saga/effects';
 import resumesSagas from './sagas/resumes.sagas';
+import detailsSagas from './sagas/details.sagas';
+import detailsSlice from './state/details.slice';
 
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga () {
   yield all([
-    ...resumesSagas
+    ...resumesSagas,
+    ...detailsSagas
   ])
 }
 
 
 export const store = configureStore({
     reducer: {
-      resumes: resumesSlice
+      resumes: resumesSlice,
+      details: detailsSlice,
     },
     middleware: [sagaMiddleware],
 });

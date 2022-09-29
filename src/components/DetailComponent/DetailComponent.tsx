@@ -1,6 +1,6 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCol, IonGrid, IonRow } from "@ionic/react";
 import { title } from "process";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import DetailItem from "../../interface/detailItem.interface";
 import styles from './DetailComponent.module.css';
 
@@ -11,7 +11,7 @@ const DetaillComponent: FC<{ item: DetailItem }> = ({ item }) => {
         minimumFractionDigits: 0
     })
 
-    const categories:any = {
+    const categories: any = {
         'ocio': styles.ocio,
         'obligaciones': styles.obligaciones,
         'hogar': styles.hogar,
@@ -23,17 +23,15 @@ const DetaillComponent: FC<{ item: DetailItem }> = ({ item }) => {
         <>
             <IonCard>
                 <IonCardHeader className={categories[item.categoria]} style={{ fontWeight: "bold" }}>
-                    {item.titulo}
-                    <span style={{ float: "right" }}>{formatterPeso.format(item.valor)}</span>
+                    Gasto: {item.titulo}
+                    <span style={{ float: "right" }}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</span>
                 </IonCardHeader>
-                <IonCardContent>
-                    <IonGrid>
-                        <IonRow>
-                            <IonCol size="3">{item.fecha.toLocaleDateString("pt-BR")}</IonCol>
-                            <IonCol size="9"></IonCol>
-                        </IonRow>
-                    </IonGrid>
-                </IonCardContent>
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size="4" className={styles.precio}>{formatterPeso.format(item.valor)}</IonCol>
+                        <IonCol size="8" className={styles.descripcion}>{item.descripcion}</IonCol>
+                    </IonRow>
+                </IonGrid>
             </IonCard>
         </>
     )
