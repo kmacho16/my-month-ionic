@@ -1,0 +1,33 @@
+.title {
+    text-align: center;
+    background-color: #cbcbcb;
+    padding: 0.6rem;
+}
+.title span{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.title .back{
+    float: left;
+    height: 22px;
+    cursor: pointer;
+}
+.select {
+    text-align: center;
+    margin: auto;
+}
+
+.labelMonth{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.saveBtn{
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.colorRed .select-alert .sc-ion-alert-md {
+    color: darkred !important;
+}

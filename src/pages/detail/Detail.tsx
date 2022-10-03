@@ -2,18 +2,24 @@ import { IonContent, IonFab, IonFabButton, IonFabList, IonHeader, IonIcon, IonPa
 import { add, arrowDownSharp, arrowRedo, share, trendingDown, trendingUp } from "ionicons/icons";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import ListDetail from "../../components/ListDetail/ListDetail";
 import Title from "../../components/Title/Title";
 import DetailItem from "../../interface/detailItem.interface";
 import { callDetails } from "../../state/details.slice";
 import { RootState } from "../../store";
 import styles from './Detail.module.css'
+
 const Detail: FC<any> = () => {
+    const history = useHistory();
     let { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
     const [details, setDetails] = useState<DetailItem[]>([]);
     const detailState = useSelector((state: RootState) => state.details);
+
+    const redirectAdd = () => {
+        history.push(`${id}/add`);
+      }
     
     useEffect(() => {
         dispatch(callDetails(id));
@@ -46,6 +52,7 @@ const Detail: FC<any> = () => {
                         </IonFabButton>
                         <IonFabList side="top">
                             <IonFabButton color='success' onClick={() => {
+                                redirectAdd()
                             }}>
                                 <IonIcon icon={trendingDown} />
                             </IonFabButton>

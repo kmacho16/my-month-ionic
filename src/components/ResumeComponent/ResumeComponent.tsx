@@ -2,15 +2,11 @@ import { IonCard, IonCardContent, IonCardHeader, IonCol, IonGrid, IonRow } from 
 import React, { FC } from "react";
 import { useHistory } from "react-router";
 import ResumeItem from "../../interface/resumeItem.interface";
+import { formatterPeso } from "../../utils/formatter";
+import { getMonth, months } from "../../utils/months";
 
 const ResumeComponent: FC<{ item: ResumeItem }> = ({ item }) => {
     const history = useHistory();
-
-    const formatterPeso = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0
-    })
 
     const redirectAdd = () => {
         history.push(`/detail/${item.id}`);
@@ -22,7 +18,7 @@ const ResumeComponent: FC<{ item: ResumeItem }> = ({ item }) => {
                 redirectAdd();
             }}>
                 <IonCardHeader color="success" style={{ fontWeight: "bold" }}>
-                    {item.month}
+                    {getMonth(item.month)}
                     <span style={{ float: "right" }}> Disponible {formatterPeso.format((item.balance-item.expenses))}</span>
                 </IonCardHeader>
                 <IonCardContent>

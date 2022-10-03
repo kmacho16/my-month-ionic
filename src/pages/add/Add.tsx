@@ -4,65 +4,27 @@ import { FC, useState } from "react";
 import styles from './Add.module.css';
 import { useHistory } from 'react-router';
 import Title from "../../components/Title/Title";
+import { getMonth, months } from "../../utils/months";
+import { useDispatch } from "react-redux";
+import { callPostResume } from "../../state/resumes.slice";
+import { formatterPeso } from "../../utils/formatter";
 
 const Add: FC<any> = () => {
+    const dispatch = useDispatch();
     const [present] = useIonPicker();
     const history = useHistory();
 
-    const [month, setMonth] = useState('01');
-    const [initialBalance, setInitialBalance] = useState<string>();
+    const [month, setMonth] = useState<string>('01');
+    const [initialBalance, setInitialBalance] = useState<number>(0);
+    const addRecord = () =>{
+        const data:{month:string, balance: string} = {
+            month,
+            balance: String(initialBalance)!
+        }
+        console.log("ooo", data);
+        dispatch(callPostResume(data));
 
-    const months = [
-        {
-            text: 'Enero',
-            value: '01',
-        },
-        {
-            text: 'Febrero',
-            value: '02',
-        },
-        {
-            text: 'Marzo',
-            value: '03',
-        },
-        {
-            text: 'Abril',
-            value: '04',
-        },
-        {
-            text: 'Mayo',
-            value: '05',
-        },
-        {
-            text: 'Junio',
-            value: '06',
-        },
-        {
-            text: 'Julio',
-            value: '07',
-        },
-        {
-            text: 'Agosto',
-            value: '08',
-        },
-        {
-            text: 'Septiembre',
-            value: '09',
-        },
-        {
-            text: 'Octubre',
-            value: '10',
-        },
-        {
-            text: 'Noviembre',
-            value: '11',
-        },
-        {
-            text: 'Diciembre',
-            value: '12',
-        },
-    ];
-
+    }
     const openPicker = async () => {
         present({
             columns: [
@@ -93,7 +55,7 @@ const Add: FC<any> = () => {
                 <br />
                 <IonRow>
                     <IonCol size="10" class={styles.select}>
-                        <IonLabel class={styles.labelMonth}>{months.find(i => i.value == month)?.text}</IonLabel>
+                        <IonLabel class={styles.labelMonth}>{getMonth(month)}</IonLabel>
                     </IonCol>
                     <IonCol size="2">
                         <IonButton onClick={openPicker}>
@@ -103,11 +65,11 @@ const Add: FC<any> = () => {
                 </IonRow>
                 <IonRow>
                     <IonCol>
-                        <IonInput value={initialBalance} placeholder="Balance" onIonChange={(e) => setInitialBalance("")} clearInput></IonInput>
+                        <IonInput value={formatterPeso.format(initialBalance!)} placeholder="Balance" onIonChange={(e) => setInitialBalance(e.target.value as number)} clearInput></IonInput>
                     </IonCol>
                 </IonRow>
                 <IonFooter>
-                    <IonButton className={styles.saveBtn} >
+                    <IonButton onClick={addRecord} className={styles.saveBtn} >
                         Guardar
                     </IonButton>
                 </IonFooter>

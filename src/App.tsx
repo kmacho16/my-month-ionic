@@ -25,6 +25,7 @@ import Add from './pages/add/Add';
 import Detail from './pages/detail/Detail';
 import { Provider } from 'react-redux'
 import { store } from './store'
+import AddDetail from './pages/detail/addDetail/addDetail';
 
 setupIonicReact();
 
@@ -38,6 +39,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/add">
             <Add />
+          </Route>
+          <Route exact path="/detail/:id/add">
+            <AddDetail />
           </Route>
           <Route exact path="/detail/:id">
             <Detail />
