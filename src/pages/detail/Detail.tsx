@@ -51,12 +51,11 @@ const Detail: FC<any> = () => {
                             <IonIcon icon={add} />
                         </IonFabButton>
                         <IonFabList side="top">
-                            <IonFabButton color='success' onClick={() => {
-                                redirectAdd()
-                            }}>
+                            <IonFabButton color='success'>
                                 <IonIcon icon={trendingDown} />
                             </IonFabButton>
                             <IonFabButton color='danger' onClick={() => {
+                                redirectAdd()
                             }}>
                                 <IonIcon icon={trendingUp} />
                             </IonFabButton>

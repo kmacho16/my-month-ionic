@@ -17,6 +17,7 @@ const DetaillComponent: FC<{ item: DetailItem }> = ({ item }) => {
         'hogar': styles.hogar,
         'mercado': styles.mercado,
         'otros': styles.otros,
+        'retiro':styles.retiro
     }
 
     return (

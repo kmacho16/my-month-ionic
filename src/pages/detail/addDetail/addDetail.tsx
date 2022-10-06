@@ -1,15 +1,19 @@
 import { IonButton, IonCol, IonContent, IonFooter, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTextarea } from "@ionic/react";
 import React, { FC, useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router";
 import Title from "../../../components/Title/Title";
+import { callPostDetails } from "../../../state/details.slice";
 import { formatterPeso } from "../../../utils/formatter";
 import styles from './addDetail.module.css';
 
 const AddDetail: FC<any> = () => {
+    const dispatch = useDispatch();
     const [balance, setBalance] = useState<string>("");
     const [category, setCategory] = useState<string>("");
     const [description, setDescription] = useState<string>();
     const [title, setTitle] = useState<string>();
+    let { id } = useParams<{ id: string }>();
 
     const categories = [
         {
@@ -29,6 +33,10 @@ const AddDetail: FC<any> = () => {
             text: "Mercado"
         },
         {
+            value: "retiro",
+            text: "Retiro"
+        },
+        {
             value: "otros",
             text: "Otros"
         },
@@ -42,11 +50,12 @@ const AddDetail: FC<any> = () => {
             title
         }
         console.log("data", data);
+        dispatch(callPostDetails({ id, body: data }));
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("balance", balance);
-    },[balance])
+    }, [balance])
 
     return (
         <>
@@ -61,7 +70,7 @@ const AddDetail: FC<any> = () => {
                         <IonCol size="12">
                             <IonSelect value={category} onIonChange={(e) => { setCategory(e.detail.value) }} placeholder="Categoria">
                                 {categories.map(cat => (
-                                    <IonSelectOption value={cat.value}>{cat.text}</IonSelectOption>
+                                    <IonSelectOption key={cat.value} value={cat.value}>{cat.text}</IonSelectOption>
                                 ))}
                             </IonSelect>
                         </IonCol>
