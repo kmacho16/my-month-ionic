@@ -1,33 +1,37 @@
 .ocio {
-    background-color: brown;
-    color: white;
-
+    background-color:#D96941;
 }
 
 .obligaciones {
-    background-color:blue;
-    color: white;
+    background-color:#214001;
+}
+
+.deudas {
+    background-color: #A62B1F;
 }
 
 .retiro{
-    background-color:rgb(108, 163, 251);
-    color: white;
+    background-color:#2E5902;
 }
 
 .hogar {
-    background-color: rgb(89, 223, 71);
-    color: rgb(0, 0, 0);
-
+    background-color: #193C40;
 }
 
 .mercado {
-    background-color: rgb(108, 0, 0);
-    color: white;
-
+    background-color: #F2668B;
 }
 
 .otros {
-    background-color: rgb(255, 66, 201);
+    background-color: #025E73;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.text_white{
+    color: white;
 }
 
 .precio {

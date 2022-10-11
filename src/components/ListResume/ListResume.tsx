@@ -18,7 +18,7 @@ const ListResume: FC<{ items: ResumeItem[] }> = ({items}) => {
                 onIonScrollStart={() => { }}
                 onIonScroll={() => { }}
                 onIonScrollEnd={() => { }}>
-                <IonList>
+                <IonList style={{background:"none"}}>
                     {mItems.map((item:ResumeItem) => (
                         <ResumeComponent key={item.id} item={item}/>                        
                     ))}

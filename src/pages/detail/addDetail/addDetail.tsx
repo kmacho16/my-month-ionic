@@ -37,6 +37,10 @@ const AddDetail: FC<any> = () => {
             text: "Retiro"
         },
         {
+            value: "deudas",
+            text: "Deudas"
+        },
+        {
             value: "otros",
             text: "Otros"
         },

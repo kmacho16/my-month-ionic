@@ -26,9 +26,10 @@ export const resumesSlice = createSlice({
             state.resumes = action.payload.resumes;
             state.status = action.payload.status;
         },
-        callPostResume: (state, action: PayloadAction<{month: string, balance: string}>) => {}
+        callPostResume: (state, action: PayloadAction<{month: string, balance: string}>) => {},
+        callDeleteResume: (state:State, action: PayloadAction<{id:string}>) => {},
     }
 })
 
-export const {callGetAll, setResumes,callPostResume} = resumesSlice.actions;
+export const {callGetAll, setResumes,callPostResume,callDeleteResume} = resumesSlice.actions;
 export default resumesSlice.reducer;

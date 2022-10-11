@@ -2,8 +2,8 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, takeEvery } from "redux-saga/effects";
 import DetailItem from "../interface/detailItem.interface";
 import { DONE, FAILED } from "../interface/status.interface";
-import { getDetails, postDetails } from "../services/detail.service";
-import { setDetails, STATE_NAME } from "../state/details.slice";
+import { deleteDetails, getDetails, postDetails } from "../services/detail.service";
+import { callDetails, setDetails, STATE_NAME } from "../state/details.slice";
 
 function* onCallDetails(action: PayloadAction<string>) {
     try {
@@ -29,16 +29,25 @@ function* onCallDetails(action: PayloadAction<string>) {
 
 function* onCallPostResume(action: PayloadAction<{ id: string, body: any }>) {
     try {
-        console.log("payload", action.payload);
         const { Item } = yield call(postDetails, action.payload.id, action.payload.body);
-        console.log("items", Item);
+        yield put(callDetails(action.payload.id));
     } catch (e) {
         console.log("error", e);
     }
+}
 
+function* onCallDeleteDetail(action: PayloadAction<{ id: string, idDetail: string }>) {
+    try {
+        const { Item } = yield call(deleteDetails, action.payload.id, action.payload.idDetail);
+        yield put(callDetails(action.payload.id));
+    } catch (e) {
+        console.log("error", e);
+    }
 }
 
 export default [
     takeEvery(`${STATE_NAME}/callDetails`, onCallDetails),
     takeEvery(`${STATE_NAME}/callPostDetails`, onCallPostResume),
+    takeEvery(`${STATE_NAME}/callDeleteDetail`, onCallDeleteDetail),
+
 ]

@@ -12,3 +12,12 @@ export const postDetails = async (id: string, body:any): Promise<{}> => {
     return data.json();
 };
 
+export const deleteDetails = async (id: string, idDetail:string): Promise<{}> => {
+    const data = await fetch(`https://bqmagrjds2.execute-api.us-west-2.amazonaws.com/resumes/${id}/detail/${idDetail}`,
+        {
+            method: 'DELETE'
+        });
+    return data.json();
+};
+
+

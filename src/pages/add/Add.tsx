@@ -21,7 +21,6 @@ const Add: FC<any> = () => {
             month,
             balance: String(initialBalance)!
         }
-        console.log("ooo", data);
         dispatch(callPostResume(data));
 
     }
@@ -65,7 +64,7 @@ const Add: FC<any> = () => {
                 </IonRow>
                 <IonRow>
                     <IonCol>
-                        <IonInput value={formatterPeso.format(initialBalance!)} placeholder="Balance" onIonChange={(e) => setInitialBalance(e.target.value as number)} clearInput></IonInput>
+                        <IonInput value={initialBalance} placeholder="Balance" onIonChange={(e) => setInitialBalance(e.target.value as number)} clearInput></IonInput>
                     </IonCol>
                 </IonRow>
                 <IonFooter>

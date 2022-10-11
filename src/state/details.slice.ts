@@ -28,11 +28,12 @@ export const detailsSlice = createSlice({
             state.loaded = action.payload.loaded;
             state.status = action.payload.status;
         },
-        callPostDetails: (state:State, action: PayloadAction<{id:string, body:any}>) => {}
+        callPostDetails: (state:State, action: PayloadAction<{id:string, body:any}>) => {},
+        callDeleteDetail: (state:State, action: PayloadAction<{id:string, idDetail:any}>) => {},
     },
 });
 
-export const {callDetails, setDetails, callPostDetails} = detailsSlice.actions;
+export const {callDetails, setDetails, callPostDetails, callDeleteDetail} = detailsSlice.actions;
 export default detailsSlice.reducer;
 
 

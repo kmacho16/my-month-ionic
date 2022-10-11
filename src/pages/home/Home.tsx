@@ -22,7 +22,6 @@ const Home: React.FC = () => {
   },[]);
 
   const update = (event: CustomEvent<RefresherEventDetail>) =>{
-    console.log("aaaa");
     dispatch(callGetAll());
     setTimeout(()=>{
       event.detail.complete();
@@ -30,7 +29,6 @@ const Home: React.FC = () => {
   }
   
   useEffect(()=>{
-    console.log("resumes", resumes);
     setItems(resumes);
     setLoaded(true);
   },[resumes])
