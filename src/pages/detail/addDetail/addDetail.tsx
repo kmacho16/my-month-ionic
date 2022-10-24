@@ -14,6 +14,7 @@ const AddDetail: FC<any> = () => {
     const [description, setDescription] = useState<string>();
     const [title, setTitle] = useState<string>();
     let { id } = useParams<{ id: string }>();
+    const history = useHistory();
 
     const categories = [
         {
@@ -47,19 +48,17 @@ const AddDetail: FC<any> = () => {
     ];
 
     const saveDetail = () => {
+        if(!balance || !category || !description || !title){
+            return;
+        }
         const data = {
             balance,
             category,
-            description,
             title
         }
-        console.log("data", data);
         dispatch(callPostDetails({ id, body: data }));
+        history.goBack();
     }
-
-    useEffect(() => {
-        console.log("balance", balance);
-    }, [balance])
 
     return (
         <>

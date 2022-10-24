@@ -1,5 +1,5 @@
-import { IonContent, IonFab, IonFabButton, IonFabList, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, RefresherEventDetail } from "@ionic/react";
-import { add, arrowDownSharp, arrowRedo, share, trendingDown, trendingUp } from "ionicons/icons";
+import { IonCol, IonContent, IonFab, IonFabButton, IonFabList, IonGrid, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, RefresherEventDetail, useIonAlert } from "@ionic/react";
+import { add, arrowDownSharp, arrowRedo, filterOutline, pieChartOutline, reorderFourOutline, share, trendingDown, trendingUp } from "ionicons/icons";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
@@ -16,11 +16,20 @@ const Detail: FC<any> = () => {
     const dispatch = useDispatch();
     const [details, setDetails] = useState<DetailItem[]>([]);
     const detailState = useSelector((state: RootState) => state.details);
-
+    const [presentAlert] = useIonAlert();
+    const funct: any = {
+        'date': (a: DetailItem, b: DetailItem) => a.fecha < b.fecha ? 1 : -1,
+        'category': (a: DetailItem, b: DetailItem) => a.categoria > b.categoria ? 1 : -1,
+        'balance': (a: DetailItem, b: DetailItem) => Number(a.valor) < Number(b.valor) ? 1 : -1,
+    }
     const redirectAdd = () => {
         history.push(`${id}/add`);
-      }
-    
+    }
+
+    const redirectGraph = () =>{
+        history.push(`${id}/graph`);
+    }
+
     useEffect(() => {
         dispatch(callDetails(id));
     }, []);
@@ -44,16 +53,60 @@ const Detail: FC<any> = () => {
                     <IonRefresher slot='fixed' onIonRefresh={update}>
                         <IonRefresherContent></IonRefresherContent>
                     </IonRefresher>
-                    <Title title="Resumenes" back={true} />
+                    <Title title="Resumen" back={true} />
+                    <IonGrid>
+                        <IonRow>
+                            <IonCol class="ion-text-center" onClick={() =>
+                                presentAlert({
+                                    header: 'Ordenar',
+                                    buttons: [
+                                        {
+                                            text: "Ok",
+                                            role: "confirm",
+                                            handler: (e: any) => {
+                                                const newDetail = [...details];
+                                                newDetail.sort(funct[e]);
+                                                setDetails(newDetail);
+                                            }
+                                        }
+                                    ],
+                                    inputs: [
+                                        {
+                                            label: 'Por fecha',
+                                            type: 'radio',
+                                            value: 'date',
+
+                                        },
+                                        {
+                                            label: 'Por categoria',
+                                            type: 'radio',
+                                            value: 'category',
+                                        },
+                                        {
+                                            label: 'Por valor',
+                                            type: 'radio',
+                                            value: 'balance',
+                                        },
+                                    ],
+                                })
+                            }>
+                                <IonIcon icon={reorderFourOutline} />
+                            </IonCol>
+
+                            <IonCol class="ion-text-center" onClick={redirectGraph}>
+                                <IonIcon icon={pieChartOutline} />
+                            </IonCol>
+                        </IonRow>
+                    </IonGrid>
                     <ListDetail items={details} />
                     <IonFab vertical="bottom" horizontal="end" slot="fixed">
                         <IonFabButton>
                             <IonIcon icon={add} />
                         </IonFabButton>
                         <IonFabList side="top">
-                            <IonFabButton color='success'>
+                            {/*<IonFabButton color='success'>
                                 <IonIcon icon={trendingDown} />
-                            </IonFabButton>
+                        </IonFabButton>*/}
                             <IonFabButton color='danger' onClick={() => {
                                 redirectAdd()
                             }}>

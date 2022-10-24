@@ -8,6 +8,7 @@ export interface State {
     status: Status,
     details: DetailItem[],
     uuid?: string,
+    detailStats?: [],
     loaded: boolean
 }
 

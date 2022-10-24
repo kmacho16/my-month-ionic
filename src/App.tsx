@@ -26,6 +26,7 @@ import Detail from './pages/detail/Detail';
 import { Provider } from 'react-redux'
 import { store } from './store'
 import AddDetail from './pages/detail/addDetail/addDetail';
+import GraphDetails from './pages/detail/GraphDetails/GraphDetails';
 
 setupIonicReact();
 
@@ -45,6 +46,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/detail/:id">
             <Detail />
+          </Route>
+          <Route exact path="/detail/:id/graph">
+            <GraphDetails />
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />

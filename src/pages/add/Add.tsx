@@ -1,13 +1,14 @@
 import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonLabel, IonPage, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar, useIonPicker } from "@ionic/react";
 import { arrowBack, arrowDown, calendar } from "ionicons/icons";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from './Add.module.css';
 import { useHistory } from 'react-router';
 import Title from "../../components/Title/Title";
 import { getMonth, months } from "../../utils/months";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { callPostResume } from "../../state/resumes.slice";
-import { formatterPeso } from "../../utils/formatter";
+import { RootState } from "../../store";
+import { DONE } from "../../interface/status.interface";
 
 const Add: FC<any> = () => {
     const dispatch = useDispatch();
@@ -16,14 +17,18 @@ const Add: FC<any> = () => {
 
     const [month, setMonth] = useState<string>('01');
     const [initialBalance, setInitialBalance] = useState<number>(0);
+    const resumes = useSelector((state: RootState)=> state.resumes)
+
     const addRecord = () =>{
         const data:{month:string, balance: string} = {
             month,
             balance: String(initialBalance)!
         }
         dispatch(callPostResume(data));
-
+        history.goBack();
     }
+
+
     const openPicker = async () => {
         present({
             columns: [
