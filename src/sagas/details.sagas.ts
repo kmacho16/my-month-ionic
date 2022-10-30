@@ -21,7 +21,7 @@ function* onCallDetails(action: PayloadAction<string>) {
             items.push(aux)
             //PENDIENTE CReAR NUEVO ELEMENTO PARA EL STATE DETAIL
         });
-        yield put(setDetails({ uuid: Item._id, status: DONE, details: items, loaded: true }))
+        yield put(setDetails({ uuid: Item._id, status: DONE, details: items, isClosed:Item.closed ? true : false,loaded: true }))
     } catch (e) {
         yield put(setDetails({ uuid: "", status: FAILED, details: [], loaded: true }))
     }

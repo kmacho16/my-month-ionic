@@ -9,6 +9,7 @@ export interface State {
     details: DetailItem[],
     uuid?: string,
     detailStats?: [],
+    isClosed?:boolean,
     loaded: boolean
 }
 
@@ -28,6 +29,7 @@ export const detailsSlice = createSlice({
             state.uuid = action.payload.uuid;
             state.loaded = action.payload.loaded;
             state.status = action.payload.status;
+            state.isClosed = action.payload.isClosed
         },
         callPostDetails: (state:State, action: PayloadAction<{id:string, body:any}>) => {},
         callDeleteDetail: (state:State, action: PayloadAction<{id:string, idDetail:any}>) => {},

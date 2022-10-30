@@ -1,0 +1,9 @@
+.activeMonth {
+    background: #05A892 ;
+    color: #0D0D0D;
+}
+
+.inactiveMonth {
+    background: #A83E10;
+    color: #f4e3e3;
+}

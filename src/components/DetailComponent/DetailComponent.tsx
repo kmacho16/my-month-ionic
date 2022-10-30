@@ -6,7 +6,7 @@ import { callDeleteDetail } from "../../state/details.slice";
 import { RootState } from "../../store";
 import styles from './DetailComponent.module.css';
 
-const DetaillComponent: FC<{ item: DetailItem }> = ({ item }) => {
+const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, actualCat }) => {
     const [presentAlert] = useIonAlert();
     const detailState = useSelector((state: RootState) => state.details);
     const dispatch = useDispatch();
@@ -25,8 +25,10 @@ const DetaillComponent: FC<{ item: DetailItem }> = ({ item }) => {
         'hogar': styles.hogar,
         'mercado': styles.mercado,
         'otros': styles.otros,
-        'retiro': styles.retiro
-    }
+        'retiro': styles.retiro,
+        'mascotas': styles.mascotas,
+        'celeste': styles.celeste
+    };
 
     return (
         <>
@@ -62,7 +64,7 @@ const DetaillComponent: FC<{ item: DetailItem }> = ({ item }) => {
                 </IonContent>
             </IonPopover>
             <IonCard>
-                <IonCardHeader id={item.id} className={`${categories[item.categoria]} ${styles.text_white}`} style={{ fontWeight: "bold" }}>
+                <IonCardHeader id={item.id} className={`${styles.text_white} ${categories[item.categoria]}`} style={{ fontWeight: "bold" }}>
                     {item.titulo} <small className={styles.capitalize}>[{item.categoria}]</small>
                     <span style={{ float: "right" }}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</span>
                 </IonCardHeader>

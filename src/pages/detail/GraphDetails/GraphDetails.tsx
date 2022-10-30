@@ -57,13 +57,16 @@ const GraphDetails: FC<any> = () => {
     }, [group]);
 
     const COLORS: any = {
-        'ocio': "#D96941",
-        'obligaciones': "#214001",
-        'deudas': "#A62B1F",
-        'retiro': "#2E5902",
-        'hogar': "#193C40",
-        'mercado': "#F2668B",
-        'otros': "#025E73",
+        'ocio': "#F76C27",
+        'obligaciones': "#EEE03E",
+        'deudas': "#E73F3F",
+        'retiro': "#D592CB",
+        'hogar': "#6D9DD1",
+        'mercado': "#F7469E",
+        'otros': "#7E45D3",
+        'Mascotas': "#CF5949",
+        'Celeste': "#D580FD",
+
     }
 
     return (
@@ -71,11 +74,11 @@ const GraphDetails: FC<any> = () => {
             <IonPage>
                 <IonContent>
                     <Title title="Resumen" back={true} />
-                    <PieChart width={800} height={250}>
+                    <PieChart width={800} height={200}>
 
                         <Pie
                             data={data}
-                            cx={100}
+                            cx={180}
                             cy={100}
                             outerRadius={80}
 

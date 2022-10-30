@@ -26,7 +26,7 @@ const Detail: FC<any> = () => {
         history.push(`${id}/add`);
     }
 
-    const redirectGraph = () =>{
+    const redirectGraph = () => {
         history.push(`${id}/graph`);
     }
 
@@ -99,21 +99,23 @@ const Detail: FC<any> = () => {
                         </IonRow>
                     </IonGrid>
                     <ListDetail items={details} />
-                    <IonFab vertical="bottom" horizontal="end" slot="fixed">
-                        <IonFabButton>
-                            <IonIcon icon={add} />
-                        </IonFabButton>
-                        <IonFabList side="top">
-                            {/*<IonFabButton color='success'>
+                    {!detailState.isClosed && (
+                        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+                            <IonFabButton>
+                                <IonIcon icon={add} />
+                            </IonFabButton>
+                            <IonFabList side="top">
+                                {/*<IonFabButton color='success'>
                                 <IonIcon icon={trendingDown} />
                         </IonFabButton>*/}
-                            <IonFabButton color='danger' onClick={() => {
-                                redirectAdd()
-                            }}>
-                                <IonIcon icon={trendingUp} />
-                            </IonFabButton>
-                        </IonFabList>
-                    </IonFab>
+                                <IonFabButton color='danger' onClick={() => {
+                                    redirectAdd()
+                                }}>
+                                    <IonIcon icon={trendingUp} />
+                                </IonFabButton>
+                            </IonFabList>
+                        </IonFab>
+                    )}
                 </IonContent>
             </IonPage>
         </>

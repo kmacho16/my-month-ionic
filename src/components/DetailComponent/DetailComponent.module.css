@@ -1,29 +1,38 @@
 .ocio {
-    background-color:#D96941;
+    background-color:#F76C27;
 }
 
 .obligaciones {
-    background-color:#214001;
+    background-color:#EEE03E;
+    color: black !important;
 }
 
 .deudas {
-    background-color: #A62B1F;
+    background-color: #E73F3F;
 }
 
 .retiro{
-    background-color:#2E5902;
+    background-color:#D592CB;
 }
 
 .hogar {
-    background-color: #193C40;
+    background-color: #6D9DD1;
 }
 
 .mercado {
-    background-color: #F2668B;
+    background-color: #F7469E;
 }
 
 .otros {
-    background-color: #025E73;
+    background-color: #7E45D3;
+}
+
+.mascotas {
+    background-color: #CF5949;
+}
+
+.celeste {
+    background-color: #D580FD;
 }
 
 .capitalize{
