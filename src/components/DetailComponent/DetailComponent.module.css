@@ -35,6 +35,11 @@
     background-color: #D580FD;
 }
 
+.restaurante {
+    background-color: #dee373;
+    color: black !important;
+}
+
 .capitalize{
     text-transform: capitalize;
 }

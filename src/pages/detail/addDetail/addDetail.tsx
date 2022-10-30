@@ -17,13 +17,10 @@ const AddDetail: FC<any> = () => {
     const history = useHistory();
 
     const categories = [
+        
         {
-            value: "ocio",
-            text: "Ocio"
-        },
-        {
-            value: "obligaciones",
-            text: "Obligaciones"
+            value: "retiro",
+            text: "Retiro"
         },
         {
             value: "hogar",
@@ -34,20 +31,28 @@ const AddDetail: FC<any> = () => {
             text: "Mercado"
         },
         {
-            value: "retiro",
-            text: "Retiro"
+            value: "obligaciones",
+            text: "Obligaciones"
         },
         {
-            value: "deudas",
-            text: "Deudas"
+            value: "celeste",
+            text: "Celeste"
         },
         {
             value: "mascotas",
             text: "Mascotas"
         },
         {
-            value: "celeste",
-            text: "Celeste"
+            value: "restaurante",
+            text: "Restaurante"
+        },
+        {
+            value: "ocio",
+            text: "Ocio"
+        },
+        {
+            value: "deudas",
+            text: "Deudas"
         },
         {
             value: "otros",

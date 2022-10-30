@@ -1,4 +1,4 @@
-import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
+import { IonCheckbox, IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 import { FC, useEffect, useState } from "react";
 import Title from "../../../components/Title/Title";
 import { PieChart, Pie, Cell } from 'recharts';
@@ -39,7 +39,7 @@ const GraphDetails: FC<any> = () => {
         const data: any[] = [];
         keys.forEach(item => {
             const percent = (Number(group[item]) * 100) / total;
-            const element = { name: item, value: group[item], percent: parseFloat(percent.toFixed(1)) }
+            const element = { name: item, value: group[item], percent: parseFloat(percent.toFixed(1)), show: true }
             data.push(element);
         });
         data.sort((a, b) => a.value > b.value ? -1 : 1);
@@ -48,7 +48,12 @@ const GraphDetails: FC<any> = () => {
 
     useEffect(() => {
         groupBy(detailState.details, "categoria");
-    }, [])
+    }, []);
+
+    useEffect(()=>{
+        console.log("datXXXa",data);
+    },[data])
+
     useEffect(() => {
         console.log("gro", group);
         if (group) {
@@ -64,8 +69,9 @@ const GraphDetails: FC<any> = () => {
         'hogar': "#6D9DD1",
         'mercado': "#F7469E",
         'otros': "#7E45D3",
-        'Mascotas': "#CF5949",
-        'Celeste': "#D580FD",
+        'mascotas': "#CF5949",
+        'celeste': "#D580FD",
+        'restaurante': "#dee373",
 
     }
 
@@ -77,7 +83,7 @@ const GraphDetails: FC<any> = () => {
                     <PieChart width={800} height={200}>
 
                         <Pie
-                            data={data}
+                            data={data.filter((i: any) => i.show)}
                             cx={180}
                             cy={100}
                             outerRadius={80}
@@ -85,7 +91,8 @@ const GraphDetails: FC<any> = () => {
                             fill="#8884d8"
                             dataKey="value"
                         >
-                            {data.map((entry: any, index: any) => (
+                            {data.filter((i: any) => i.show).map((entry: any, index: any) => (
+                                
                                 <Cell key={`cell-${index}`} fill={COLORS[entry.name]} />
                             ))}
                         </Pie>
@@ -95,8 +102,8 @@ const GraphDetails: FC<any> = () => {
                             <IonCol>
                                 <table style={{ width: "100%" }}>
                                     <thead>
-
                                         <tr>
+                                            <th>Mostrar</th>
                                             <th>
                                                 Categoria
                                             </th>
@@ -112,6 +119,14 @@ const GraphDetails: FC<any> = () => {
                                     <tbody>
                                         {data.map((item: any, index: any) => (
                                             <tr key={`tr-${index}`} className={index % 2 == 0 ? styles.gray_background : ''} style={{ textAlign: "center", height: "25px" }}>
+                                                <td><IonCheckbox checked={item.show} onIonChange={(e) => {
+
+                                                    setData((prev: any) => {
+                                                        prev[index] = { ...item, show: e.detail.checked };
+                                                        console.log(prev);
+                                                        return [...prev];
+                                                    })
+                                                }} slot="start"></IonCheckbox></td>
                                                 <td style={{ textTransform: "capitalize" }}>{item.name}</td>
                                                 <td>{formatterPeso.format(item.value)}</td>
                                                 <td>{item.percent}%</td>
