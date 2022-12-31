@@ -28,6 +28,7 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
         'retiro': styles.retiro,
         'mascotas': styles.mascotas,
         'celeste': styles.celeste,
+        'TC': styles.TC,
         'restaurante': styles.restaurante
     };
 

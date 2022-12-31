@@ -55,6 +55,10 @@ const AddDetail: FC<any> = () => {
             text: "Deudas"
         },
         {
+            value: "TC",
+            text: "TC"
+        },
+        {
             value: "otros",
             text: "Otros"
         },
@@ -67,7 +71,8 @@ const AddDetail: FC<any> = () => {
         const data = {
             balance,
             category,
-            title
+            title,
+            description
         }
         dispatch(callPostDetails({ id, body: data }));
         history.goBack();

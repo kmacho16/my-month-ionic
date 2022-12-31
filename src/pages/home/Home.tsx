@@ -1,6 +1,5 @@
-import { IonContent, IonFab, IonFabButton, IonFabList, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, RefresherEventDetail } from '@ionic/react';
+import { IonContent, IonFab, IonFabButton, IonFabList, IonIcon, IonPage, IonRefresher, IonRefresherContent, RefresherEventDetail } from '@ionic/react';
 import ListResume from '../../components/ListResume/ListResume';
-import styles from './Home.module.css';
 import { add, share } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import ResumeItem from '../../interface/resumeItem.interface';

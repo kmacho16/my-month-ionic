@@ -71,8 +71,8 @@ const GraphDetails: FC<any> = () => {
         'otros': "#7E45D3",
         'mascotas': "#CF5949",
         'celeste': "#D580FD",
+        'TC': "#D580FD",
         'restaurante': "#dee373",
-
     }
 
     return (

@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonBadge, IonIcon, IonLabel, IonRouterOutlet, IonTab, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/home/Home';
 
@@ -27,34 +27,36 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 import AddDetail from './pages/detail/addDetail/addDetail';
 import GraphDetails from './pages/detail/GraphDetails/GraphDetails';
+import { calendar, personCircle } from 'ionicons/icons';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <Provider store={store} >
     <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/add">
-            <Add />
-          </Route>
-          <Route exact path="/detail/:id/add">
-            <AddDetail />
-          </Route>
-          <Route exact path="/detail/:id">
-            <Detail />
-          </Route>
-          <Route exact path="/detail/:id/graph">
-            <GraphDetails />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-        </IonRouterOutlet>
-      </IonReactRouter>
+          <IonReactRouter>
+            <IonRouterOutlet>
+              <Route exact path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/add">
+                <Add />
+              </Route>
+              <Route exact path="/detail/:id/add">
+                <AddDetail />
+              </Route>
+              <Route exact path="/detail/:id">
+                <Detail />
+              </Route>
+              <Route exact path="/detail/:id/graph">
+                <GraphDetails />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+            </IonRouterOutlet>
+          </IonReactRouter>
+
     </IonApp>
   </Provider>
 );
