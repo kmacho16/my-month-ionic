@@ -7,7 +7,7 @@ import { callDeleteDetail } from "../../state/details.slice";
 import { RootState } from "../../store";
 import styles from './DetailComponent.module.css';
 
-const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, actualCat }) => {
+const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }> = ({ item, maxSize, index }) => {
     const [presentAlert] = useIonAlert();
     const detailState = useSelector((state: RootState) => state.details);
     const dispatch = useDispatch();
@@ -23,12 +23,12 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
         'ocio': { styles: styles.ocio, icon: trailSignOutline },
         'obligaciones': { styles: styles.obligaciones, icon: walletOutline },
         'deudas': { styles: styles.deudas, icon: cardOutline },
-        'hogar': { styles: styles.hogar, icon: homeSharp},
+        'hogar': { styles: styles.hogar, icon: homeSharp },
         'mercado': { styles: styles.mercado, icon: cartOutline },
-        'otros': { styles: styles.otros, icon:alertCircleSharp },
+        'otros': { styles: styles.otros, icon: alertCircleSharp },
         'retiro': { styles: styles.retiro, icon: cashOutline },
-        'mascotas': { styles: styles.mascotas, icon:pawSharp},
-        'celeste': { styles: styles.celeste, icon:flowerOutline },
+        'mascotas': { styles: styles.mascotas, icon: pawSharp },
+        'celeste': { styles: styles.celeste, icon: flowerOutline },
         'TC': { styles: styles.TC, },
         'restaurante': { styles: styles.restaurante, icon: fastFoodOutline },
     };
@@ -71,6 +71,7 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
                         <section className={`${styles.shape_circle} ${categories[item.categoria]['styles']}`}>
                             <IonIcon icon={categories[item.categoria]['icon']} />
                         </section>
+                        {index+1 != maxSize && <em className={styles.line}></em>}
                     </IonCol>
                     <IonCol size="6">
                         <section className={styles.title}>
@@ -82,7 +83,7 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
 
                     </IonCol>
                     <IonCol size="4">
-                        <span style={{ fontWeight: "bold", color:"black" }}>{formatterPeso.format(item.valor)}</span> <br />
+                        <span className={styles.precio} >{formatterPeso.format(item.valor)}</span> <br />
                         <small className={styles.date}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</small>
                     </IonCol>
                 </IonRow>

@@ -18,7 +18,7 @@ const ListDetail: FC<{ items: DetailItem[] }> = ({ items }) => {
         <>
             {items.map((item, index) => (
                 <>
-                    <DetaillComponent actualCat={index == 0 ? item.categoria : items[index-1].categoria} key={item.id} item={item} />
+                    <DetaillComponent index={index} maxSize={items.length} key={item.id} item={item} />
                 </>
             ))}
 
