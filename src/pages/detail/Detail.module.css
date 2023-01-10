@@ -3,17 +3,34 @@
     background-color: #cbcbcb;
     padding: 0.6rem;
 }
-.title span{
+
+.title span {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
-.filterDiv{
+.filterDiv {
     padding: 5px 25px;
 }
 
-.iconFilter{
+.iconFilter {
     font-size: 20px;
     float: right;
+}
+
+.cardDetails {
+    margin: 10px 25px 25px 25px;
+    box-shadow: 17px 7px 9px #aea7a736;
+    border-radius: 20px;
+}
+
+.cardOptions {
+    margin: 25px;
+    box-shadow: 17px 7px 9px #aea7a736;
+    border-radius: 20px;
+}
+
+.cardContent {
+    padding: 0;
 }

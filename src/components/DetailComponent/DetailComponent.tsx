@@ -1,4 +1,5 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCol, IonContent, IonGrid, IonItem, IonList, IonPopover, IonRow, useIonAlert } from "@ionic/react";
+import { IonCard, IonCardContent, IonCardHeader, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonList, IonPopover, IonRow, useIonAlert } from "@ionic/react";
+import { alertCircleSharp, cardOutline, cartOutline, cashOutline, fastFood, fastFoodOutline, flowerOutline, homeSharp, informationCircle, pawSharp, pizzaOutline, star, trailSignOutline, walletOutline } from "ionicons/icons";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DetailItem from "../../interface/detailItem.interface";
@@ -19,17 +20,17 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
     })
 
     const categories: any = {
-        'ocio': styles.ocio,
-        'obligaciones': styles.obligaciones,
-        'deudas': styles.deudas,
-        'hogar': styles.hogar,
-        'mercado': styles.mercado,
-        'otros': styles.otros,
-        'retiro': styles.retiro,
-        'mascotas': styles.mascotas,
-        'celeste': styles.celeste,
-        'TC': styles.TC,
-        'restaurante': styles.restaurante
+        'ocio': { styles: styles.ocio, icon: trailSignOutline },
+        'obligaciones': { styles: styles.obligaciones, icon: walletOutline },
+        'deudas': { styles: styles.deudas, icon: cardOutline },
+        'hogar': { styles: styles.hogar, icon: homeSharp},
+        'mercado': { styles: styles.mercado, icon: cartOutline },
+        'otros': { styles: styles.otros, icon:alertCircleSharp },
+        'retiro': { styles: styles.retiro, icon: cashOutline },
+        'mascotas': { styles: styles.mascotas, icon:pawSharp},
+        'celeste': { styles: styles.celeste, icon:flowerOutline },
+        'TC': { styles: styles.TC, },
+        'restaurante': { styles: styles.restaurante, icon: fastFoodOutline },
     };
 
     return (
@@ -40,7 +41,6 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
                         <IonItem button={true} detail={false} onClick={() =>
                             presentAlert({
                                 header: 'Seguro que deseas eliminar?',
-
                                 buttons: [
                                     {
                                         text: 'Cancelar',
@@ -65,18 +65,29 @@ const DetaillComponent: FC<{ item: DetailItem, actualCat?: string }> = ({ item, 
                     </IonList>
                 </IonContent>
             </IonPopover>
-            <IonCard>
-                <IonCardHeader id={item.id} className={`${styles.text_white} ${categories[item.categoria]}`} style={{ fontWeight: "bold" }}>
-                    {item.titulo} <small className={styles.capitalize}>[{item.categoria}]</small>
-                    <span style={{ float: "right" }}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</span>
-                </IonCardHeader>
-                <IonGrid>
-                    <IonRow>
-                        <IonCol size="4" className={styles.precio}>{formatterPeso.format(item.valor)}</IonCol>
-                        <IonCol size="8" className={styles.descripcion}>{item.descripcion}</IonCol>
-                    </IonRow>
-                </IonGrid>
-            </IonCard>
+            <IonGrid>
+                <IonRow>
+                    <IonCol size="2">
+                        <section className={`${styles.shape_circle} ${categories[item.categoria]['styles']}`}>
+                            <IonIcon icon={categories[item.categoria]['icon']} />
+                        </section>
+                    </IonCol>
+                    <IonCol size="6">
+                        <section className={styles.title}>
+                            {item.titulo}
+                        </section>
+                        <small className={styles.category}>
+                            {item.categoria}
+                        </small>
+
+                    </IonCol>
+                    <IonCol size="4">
+                        <span style={{ fontWeight: "bold", color:"black" }}>{formatterPeso.format(item.valor)}</span> <br />
+                        <small className={styles.date}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</small>
+                    </IonCol>
+                </IonRow>
+
+            </IonGrid>
         </>
     )
 }

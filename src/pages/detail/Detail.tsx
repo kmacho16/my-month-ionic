@@ -1,4 +1,4 @@
-import { IonCol, IonContent, IonFab, IonFabButton, IonFabList, IonGrid, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, RefresherEventDetail, useIonAlert } from "@ionic/react";
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonFab, IonFabButton, IonFabList, IonGrid, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, RefresherEventDetail, useIonAlert } from "@ionic/react";
 import { add, arrowDownSharp, arrowRedo, filterOutline, pieChartOutline, reorderFourOutline, share, trendingDown, trendingUp } from "ionicons/icons";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,51 +54,69 @@ const Detail: FC<any> = () => {
                         <IonRefresherContent></IonRefresherContent>
                     </IonRefresher>
                     <Title title="Resumen" back={true} />
-                    <IonGrid>
-                        <IonRow>
-                            <IonCol class="ion-text-center" onClick={() =>
-                                presentAlert({
-                                    header: 'Ordenar',
-                                    buttons: [
-                                        {
-                                            text: "Ok",
-                                            role: "confirm",
-                                            handler: (e: any) => {
-                                                const newDetail = [...details];
-                                                newDetail.sort(funct[e]);
-                                                setDetails(newDetail);
+                    <IonCard className={styles.cardOptions}>
+                        <IonGrid>
+                            <IonRow>
+                                <IonCol class="ion-text-center" onClick={() =>
+                                    presentAlert({
+                                        header: 'Ordenar',
+                                        buttons: [
+                                            {
+                                                text: "Ok",
+                                                role: "confirm",
+                                                handler: (e: any) => {
+                                                    const newDetail = [...details];
+                                                    newDetail.sort(funct[e]);
+                                                    setDetails(newDetail);
+                                                }
                                             }
-                                        }
-                                    ],
-                                    inputs: [
-                                        {
-                                            label: 'Por fecha',
-                                            type: 'radio',
-                                            value: 'date',
+                                        ],
+                                        inputs: [
+                                            {
+                                                label: 'Por fecha',
+                                                type: 'radio',
+                                                value: 'date',
 
-                                        },
-                                        {
-                                            label: 'Por categoria',
-                                            type: 'radio',
-                                            value: 'category',
-                                        },
-                                        {
-                                            label: 'Por valor',
-                                            type: 'radio',
-                                            value: 'balance',
-                                        },
-                                    ],
-                                })
-                            }>
-                                <IonIcon icon={reorderFourOutline} />
-                            </IonCol>
+                                            },
+                                            {
+                                                label: 'Por categoria',
+                                                type: 'radio',
+                                                value: 'category',
+                                            },
+                                            {
+                                                label: 'Por valor',
+                                                type: 'radio',
+                                                value: 'balance',
+                                            },
+                                        ],
+                                    })
+                                }>
+                                    <span>
+                                        <IonIcon style={{color:"#003b93"}} icon={reorderFourOutline} />
+                                        
+                                    </span>
+                                    <br />
+                                    <strong style={{color:"#003b93"}}>Filtro</strong>
+                                </IonCol>
 
-                            <IonCol class="ion-text-center" onClick={redirectGraph}>
-                                <IonIcon icon={pieChartOutline} />
-                            </IonCol>
-                        </IonRow>
-                    </IonGrid>
-                    <ListDetail items={details} />
+                                <IonCol class="ion-text-center" onClick={redirectGraph}>
+                                    <IonIcon style={{color:"#662a01"}} icon={pieChartOutline} /> <br />
+                                    <strong style={{color:"#662a01"}}>Graficos</strong>
+
+                                </IonCol>
+                            </IonRow>
+                        </IonGrid>
+                    </IonCard>
+
+                    <IonCard className={styles.cardDetails}>
+                        <IonCardHeader>
+                            <IonCardTitle style={{ color: "black" }}>Transacciones</IonCardTitle>
+                        </IonCardHeader>
+
+                        <IonCardContent className={styles.cardContent}>
+                            <ListDetail items={details} />
+                        </IonCardContent>
+                    </IonCard>
                     {!detailState.isClosed && (
                         <IonFab vertical="bottom" horizontal="end" slot="fixed">
                             <IonFabButton>
