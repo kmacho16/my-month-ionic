@@ -30,7 +30,24 @@
     box-shadow: 17px 7px 9px #aea7a736;
     border-radius: 20px;
 }
+.cardResume {
+    margin: 10px 25px;
+    box-shadow: 17px 7px 9px #aea7a736;
+    border-radius: 14px;
+}
 
 .cardContent {
     padding: 0;
+}
+
+.resumeTitle{
+    text-transform: capitalize;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    margin-top: 5px;
+    color: black;
+}
+
+.resumeValues{
+    text-align: right;
 }

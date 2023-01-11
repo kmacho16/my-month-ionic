@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DetailItem from "../../interface/detailItem.interface";
 import { callDeleteDetail } from "../../state/details.slice";
 import { RootState } from "../../store";
+import { formatterPeso } from "../../utils/formatter";
 import styles from './DetailComponent.module.css';
 
 const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }> = ({ item, maxSize, index }) => {
@@ -13,11 +14,7 @@ const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }>
     const dispatch = useDispatch();
 
 
-    const formatterPeso = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0
-    })
+    
 
     const categories: any = {
         'ocio': { styles: styles.ocio, icon: trailSignOutline },
@@ -88,7 +85,6 @@ const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }>
                         <small className={styles.date}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</small>
                     </IonCol>
                 </IonRow>
-
             </IonGrid>
         </>
     )

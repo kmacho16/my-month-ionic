@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonFab, IonFabButton, IonFabList, IonGrid, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonRow, RefresherEventDetail, useIonAlert } from "@ionic/react";
+import { IonAccordion, IonAccordionGroup, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonFab, IonFabButton, IonFabList, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonPage, IonRefresher, IonRefresherContent, IonRow, RefresherEventDetail, useIonAlert } from "@ionic/react";
 import { add, arrowDownSharp, arrowRedo, filterOutline, pieChartOutline, reorderFourOutline, share, trendingDown, trendingUp } from "ionicons/icons";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import Title from "../../components/Title/Title";
 import DetailItem from "../../interface/detailItem.interface";
 import { callDetails } from "../../state/details.slice";
 import { RootState } from "../../store";
+import { formatterPeso } from "../../utils/formatter";
 import styles from './Detail.module.css'
 
 const Detail: FC<any> = () => {
@@ -92,22 +93,56 @@ const Detail: FC<any> = () => {
                                     })
                                 }>
                                     <span>
-                                        <IonIcon style={{color:"#003b93"}} icon={reorderFourOutline} />
-                                        
+                                        <IonIcon style={{ color: "#003b93" }} icon={reorderFourOutline} />
+
                                     </span>
                                     <br />
-                                    <strong style={{color:"#003b93"}}>Filtro</strong>
+                                    <strong style={{ color: "#003b93" }}>Filtro</strong>
                                 </IonCol>
 
                                 <IonCol class="ion-text-center" onClick={redirectGraph}>
-                                    <IonIcon style={{color:"#662a01"}} icon={pieChartOutline} /> <br />
-                                    <strong style={{color:"#662a01"}}>Graficos</strong>
+                                    <IonIcon style={{ color: "#662a01" }} icon={pieChartOutline} /> <br />
+                                    <strong style={{ color: "#662a01" }}>Graficos</strong>
 
                                 </IonCol>
                             </IonRow>
                         </IonGrid>
                     </IonCard>
-                    
+
+                    <IonCard className={styles.cardResume}>
+                        <IonAccordionGroup>
+                            <IonAccordion>
+                                <IonItem slot="header">
+                                    <IonGrid>
+                                        <IonRow className={styles.resumeTitle}>
+                                            <IonCol size="8">
+                                                <span >total disponible</span>
+                                            </IonCol>
+                                            <IonCol style={{ textAlign: "right" }} size="4">
+                                                {formatterPeso.format(detailState.balance - detailState.expenses)}
+                                            </IonCol>
+                                        </IonRow>
+                                    </IonGrid>
+                                </IonItem>
+                                <div className="ion-padding" style={{ background: "white" }} slot="content">
+                                    <IonGrid>
+                                        <IonRow className={styles.resumeTitle}>
+                                            <IonCol size="9">Saldo inicial</IonCol>
+                                            <IonCol className={styles.resumeValues} size="3">   {formatterPeso.format(detailState.balance)}</IonCol>
+                                            <IonCol size="9">Total gastado</IonCol>
+                                            <IonCol className={styles.resumeValues} size="3">{formatterPeso.format(detailState.expenses)}</IonCol>
+                                            <IonCol size="9">Compra tarjetas</IonCol>
+                                            <IonCol className={styles.resumeValues} size="3">{formatterPeso.format(detailState.credit)}
+                                            </IonCol>
+                                        </IonRow>
+                                    </IonGrid>
+                                </div>
+                            </IonAccordion>
+
+                        </IonAccordionGroup>
+
+                    </IonCard>
+
 
                     <IonCard className={styles.cardDetails}>
                         <IonCardHeader>

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { stat } from "fs";
 import DetailItem from "../interface/detailItem.interface";
 import { IDLE, Status } from "../interface/status.interface";
 
@@ -9,13 +10,19 @@ export interface State {
     details: DetailItem[],
     uuid?: string,
     detailStats?: [],
+    expenses:number,
+    credit:number,
     isClosed?:boolean,
+    balance: number,
     loaded: boolean
 }
 
 const initialState: State ={
     status: IDLE, 
     loaded: false,
+    expenses: 0,
+    credit: 0,
+    balance: 0,
     details: []
 }
 
@@ -29,7 +36,10 @@ export const detailsSlice = createSlice({
             state.uuid = action.payload.uuid;
             state.loaded = action.payload.loaded;
             state.status = action.payload.status;
-            state.isClosed = action.payload.isClosed
+            state.isClosed = action.payload.isClosed;
+            state.credit = action.payload.credit;
+            state.expenses = action.payload.expenses;
+            state.balance = action.payload.balance;
         },
         callPostDetails: (state:State, action: PayloadAction<{id:string, body:any}>) => {},
         callDeleteDetail: (state:State, action: PayloadAction<{id:string, idDetail:any}>) => {},
