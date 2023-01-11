@@ -66,7 +66,7 @@ const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }>
                 </IonContent>
             </IonPopover>
             <IonGrid>
-                <IonRow>
+                <IonRow id={item.id}>
                     <IonCol size="2">
                         <section className={`${styles.shape_circle} ${categories[item.categoria]['styles']}`}>
                             <IonIcon icon={categories[item.categoria]['icon']} />
@@ -83,6 +83,7 @@ const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }>
 
                     </IonCol>
                     <IonCol size="4">
+                    {item.tarjetaCredito && <IonIcon className={styles.isCreditCard}  icon={cardOutline}/>}
                         <span className={styles.precio} >{formatterPeso.format(item.valor)}</span> <br />
                         <small className={styles.date}>{new Date(parseInt(item.fecha)).toLocaleDateString("pt-BR")}</small>
                     </IonCol>

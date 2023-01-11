@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonContent, IonFooter, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTextarea } from "@ionic/react";
+import { IonButton, IonCheckbox, IonCol, IonContent, IonFooter, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTextarea } from "@ionic/react";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router";
@@ -13,11 +13,13 @@ const AddDetail: FC<any> = () => {
     const [category, setCategory] = useState<string>("");
     const [description, setDescription] = useState<string>();
     const [title, setTitle] = useState<string>();
+    const [tcChecked, setChecked] = useState<boolean>(false);
+
     let { id } = useParams<{ id: string }>();
     const history = useHistory();
 
     const categories = [
-        
+
         {
             value: "retiro",
             text: "Retiro"
@@ -65,15 +67,17 @@ const AddDetail: FC<any> = () => {
     ];
 
     const saveDetail = () => {
-        if(!balance || !category || !description || !title){
+        if (!balance || !category || !description || !title) {
             return;
         }
         const data = {
             balance,
             category,
             title,
-            description
+            description,
+            credit_card: tcChecked
         }
+        console.log("data",data);
         dispatch(callPostDetails({ id, body: data }));
         history.goBack();
     }
@@ -100,6 +104,14 @@ const AddDetail: FC<any> = () => {
                         </IonCol>
                         <IonCol size="12">
                             <IonInput value={balance!} placeholder="Balance" onIonChange={(e) => setBalance(e.target.value as string)} clearInput></IonInput>
+                        </IonCol>
+                        <IonCol size="12">
+                            <IonItem>
+                                <IonCheckbox checked={tcChecked} onIonChange={e=>{
+                                    setChecked(e.detail.checked);
+                                }} slot="start"></IonCheckbox>
+                                <IonLabel>Compra con tarjeta</IonLabel>
+                            </IonItem>
                         </IonCol>
                     </IonRow>
                     <IonFooter>

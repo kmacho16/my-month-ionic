@@ -107,6 +107,7 @@ const Detail: FC<any> = () => {
                             </IonRow>
                         </IonGrid>
                     </IonCard>
+                    
 
                     <IonCard className={styles.cardDetails}>
                         <IonCardHeader>

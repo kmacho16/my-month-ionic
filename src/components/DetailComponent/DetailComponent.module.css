@@ -72,9 +72,13 @@
 .shape_circle {
     height: 40px;
     width: 40px;
-    padding: 10% 20%;
     border-radius: 50%;
     font-size: 25px;
+}
+.shape_circle ion-icon {
+    position:absolute;
+    top: 12px;
+    left: 13px;
 }
 
 .title {
@@ -106,4 +110,10 @@
     position: absolute;
     left: 24px;
     border-right: 2px dotted #8d6c6c;
+}
+
+.isCreditCard{
+    position: absolute;
+    top: 15px;
+    left: 40px;
 }

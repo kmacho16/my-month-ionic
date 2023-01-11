@@ -16,7 +16,8 @@ function* onCallDetails(action: PayloadAction<string>) {
                 titulo: detail.title,
                 valor: detail.balance,
                 fecha: detail.date,
-                descripcion: detail.description
+                descripcion: detail.description,
+                tarjetaCredito: detail.credit_card
             }
             items.push(aux)
             //PENDIENTE CReAR NUEVO ELEMENTO PARA EL STATE DETAIL

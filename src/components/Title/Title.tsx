@@ -1,4 +1,4 @@
-import { IonHeader, IonIcon } from "@ionic/react";
+import { IonCard, IonHeader, IonIcon } from "@ionic/react";
 import { arrowBack } from "ionicons/icons";
 import React, { FC } from "react";
 import { useHistory } from "react-router";
@@ -13,7 +13,7 @@ const Title: FC<props> = ({ title, back = false }) => {
     const history = useHistory();
 
     return (
-        <IonHeader className={styles.title}>
+        <IonCard className={styles.title}>
             {back && (
                 <IonIcon className={styles.back} icon={arrowBack} onClick={() => {
                     history.goBack();
@@ -22,7 +22,7 @@ const Title: FC<props> = ({ title, back = false }) => {
             <span >
                 {title}
             </span>
-        </IonHeader>
+        </IonCard>
     );
 
 }

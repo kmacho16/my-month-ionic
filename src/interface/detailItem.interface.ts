@@ -4,5 +4,6 @@ export default interface DetailItem {
     titulo: string;
     valor: number;
     fecha: string;
+    tarjetaCredito: boolean;
     descripcion?:string;
 }
