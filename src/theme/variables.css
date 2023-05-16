@@ -44,7 +44,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-warning-tint: #ffca22;
 
   /** danger **/
-  --ion-color-danger: #eb445a;
+  --ion-color-danger: #A83E10;
   --ion-color-danger-rgb: 235, 68, 90;
   --ion-color-danger-contrast: #ffffff;
   --ion-color-danger-contrast-rgb: 255, 255, 255;
@@ -118,7 +118,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-color-warning-shade: #e0bb2e;
     --ion-color-warning-tint: #ffd948;
 
-    --ion-color-danger: #ff4961;
+    --ion-color-danger: #A83E10;
     --ion-color-danger-rgb: 255, 73, 97;
     --ion-color-danger-contrast: #ffffff;
     --ion-color-danger-contrast-rgb: 255, 255, 255;
@@ -237,4 +237,38 @@ http://ionicframework.com/docs/theming/ */
   .select-alert .sc-ion-alert-md {
     color: darkred !important;
   }
+  .toolbar-background, .toolbar-container{
+    background: none;
+  }
+  .circle {
+    background: radial-gradient(circle at top right, transparent 25px, #000 25px);
+    color: white;
+    z-index: -1;
+    padding-top: 10px;
+
+  }
+  .circle2 {
+    background: radial-gradient(circle at top left, transparent 25px, #000 25px);
+    color: white;
+    z-index: 0;
+    padding-top: 10px;
+
+  }
+  .btn{
+    height: 35px;
+    width: 35px;
+    background-color: #3880ff;
+    border-radius: 50%;
+    position: absolute;
+    top: -16px;
+    left: 46%;
+    z-index: 999;
+  }
+  .ion-footer{
+    height: 40px;
+  }
+  .ion-row{
+    height: 100%;
+  }
+
 }

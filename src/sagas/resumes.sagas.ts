@@ -15,7 +15,8 @@ function* onGetAll() {
                 balance: item.balance,
                 month: item.month,
                 expenses: item.expenses,
-                closed: item.closed ? true : false
+                closed: item.closed ? true : false,
+                credit: item.credit,
             }
 
             list.push(newItem);

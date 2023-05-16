@@ -1,9 +1,28 @@
+.card{
+
+    margin: 10px 30px;
+}
+
 .activeMonth {
-    background: #05A892 ;
-    color: #0D0D0D;
+    color: #285cf1;
 }
 
 .inactiveMonth {
-    background: #A83E10;
-    color: #f4e3e3;
+    color: #A83E10;
 }
+
+.inactiveMonthBtn{
+    background: #A83E10;
+}
+
+.buttonSeeMore {
+    position: absolute;
+    left: 50px;
+    top: 20px;
+}
+
+.footerCard{
+    text-align: center;
+    border-top: 2px dotted #dedede;
+}
+

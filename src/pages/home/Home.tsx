@@ -1,6 +1,6 @@
 import { IonContent, IonFab, IonFabButton, IonFabList, IonIcon, IonPage, IonRefresher, IonRefresherContent, RefresherEventDetail } from '@ionic/react';
 import ListResume from '../../components/ListResume/ListResume';
-import { add, share } from 'ionicons/icons';
+import { add, settings, share } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import ResumeItem from '../../interface/resumeItem.interface';
 import { useHistory } from 'react-router';
@@ -36,13 +36,16 @@ const Home: React.FC = () => {
     history.push('/add');
   }
 
+  const redirectSettings= () => {
+    history.push('/settings');
+  }
+
   return (
     <IonPage>
       <IonContent>
         <IonRefresher slot='fixed' onIonRefresh={update}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
-          <Title title='Resumenes mensuales'/>
           {loaded && (<ListResume items={items} />)}
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton>
@@ -51,7 +54,10 @@ const Home: React.FC = () => {
           <IonFabList side="top">
             <IonFabButton onClick={() => {
               redirectAdd();
-            }}><IonIcon icon={add} /></IonFabButton>
+            }}><IonIcon style={{color:'black'}} icon={add} /></IonFabButton>
+            <IonFabButton  onClick={() => {
+              redirectSettings();
+            }}><IonIcon style={{color:'black'}} icon={settings} /></IonFabButton>
           </IonFabList>
         </IonFab>
       </IonContent>

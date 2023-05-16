@@ -108,7 +108,8 @@
 .line{
     padding-top: 20px;
     position: absolute;
-    left: 24px;
+    left: 28px;
+    top: 50px;
     border-right: 2px dotted #8d6c6c;
 }
 
@@ -116,4 +117,10 @@
     position: absolute;
     top: 15px;
     left: 10px;
+}
+
+.description{
+    background: #eaeaea;
+    color: black;
+    font-weight: bold;
 }

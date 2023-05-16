@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonBadge, IonIcon, IonLabel, IonRouterOutlet, IonTab, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
+import { IonApp, IonBadge, IonCol, IonContent, IonFooter, IonGrid, IonIcon, IonLabel, IonRouterOutlet, IonRow, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/home/Home';
 
@@ -27,36 +27,43 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 import AddDetail from './pages/detail/addDetail/addDetail';
 import GraphDetails from './pages/detail/GraphDetails/GraphDetails';
-import { calendar, personCircle } from 'ionicons/icons';
+import { calendar, personCircle, playCircle } from 'ionicons/icons';
+import Settings from './pages/settings/Settings';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <Provider store={store} >
     <IonApp>
-          <IonReactRouter>
-            <IonRouterOutlet>
-              <Route exact path="/home">
-                <Home />
-              </Route>
-              <Route exact path="/add">
-                <Add />
-              </Route>
-              <Route exact path="/detail/:id/add">
-                <AddDetail />
-              </Route>
-              <Route exact path="/detail/:id">
-                <Detail />
-              </Route>
-              <Route exact path="/detail/:id/graph">
-                <GraphDetails />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/home" />
-              </Route>
-            </IonRouterOutlet>
-          </IonReactRouter>
+      <IonContent>
 
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route exact path="/home" render={() => <Home />} />
+            <Route exact path="/add" render={() => <Add />} />
+            <Route exact path="/settings" render={() => <Settings />} />
+            <Route exact path="/detail/:id/add" render={() => <AddDetail />} />
+            <Route exact path="/detail/:id" render={() => <Detail />} />
+            <Route exact path="/detail/:id/graph" render={() => <GraphDetails />} />
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonContent>
+      <IonFooter>
+          <IonRow>
+            <IonCol style={{ textAlign: 'center' }} className="circle">
+              lala
+            </IonCol>
+            <IonCol style={{ textAlign: 'center' }} className="circle2">
+              Lolo
+            </IonCol>
+          </IonRow>
+          <div className='btn'>
+            
+          </div>
+      </IonFooter>
     </IonApp>
   </Provider>
 );
