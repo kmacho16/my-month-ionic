@@ -31,9 +31,10 @@ function* onCallDetails(action: PayloadAction<string>) {
             expenses: Item.expenses, 
             credit: Item.credit,
             balance: Item.balance,
+            incomes: Item.incomes
          }))
     } catch (e) {
-        yield put(setDetails({ uuid: "", status: FAILED, details: [], loaded: true, expenses: 0, credit:0, balance:0 }))
+        yield put(setDetails({ uuid: "", status: FAILED, details: [], loaded: true, expenses: 0, credit:0, balance:0, incomes:0 }))
     }
 }
 

@@ -27,6 +27,10 @@ const Detail: FC<any> = () => {
         history.push(`${id}/add`);
     }
 
+    const redirectIncome = () => {
+        history.push(`${id}/income`);
+    }
+
     const redirectGraph = () => {
         history.push(`${id}/graph`);
     }
@@ -119,7 +123,7 @@ const Detail: FC<any> = () => {
                                                 <span >total disponible</span>
                                             </IonCol>
                                             <IonCol style={{ textAlign: "right" }} size="4">
-                                                {formatterPeso.format(detailState.balance - detailState.expenses)}
+                                                {formatterPeso.format((detailState.balance - detailState.expenses) + detailState.incomes)}
                                             </IonCol>
                                         </IonRow>
                                     </IonGrid>
@@ -159,9 +163,9 @@ const Detail: FC<any> = () => {
                                 <IonIcon icon={add} />
                             </IonFabButton>
                             <IonFabList side="top">
-                                {/*<IonFabButton color='success'>
+                                <IonFabButton color='success' onClick={()=>{redirectIncome()}}>
                                 <IonIcon icon={trendingDown} />
-                        </IonFabButton>*/}
+                        </IonFabButton>
                                 <IonFabButton color='danger' onClick={() => {
                                     redirectAdd()
                                 }}>

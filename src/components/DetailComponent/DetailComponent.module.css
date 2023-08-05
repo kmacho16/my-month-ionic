@@ -55,6 +55,11 @@
     color: #92964a;
 }
 
+.income {
+    background-color: #009111;
+    color: #ffffff;
+}
+
 .capitalize {
     text-transform: capitalize;
 }

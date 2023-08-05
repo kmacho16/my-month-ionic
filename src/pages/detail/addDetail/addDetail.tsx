@@ -86,7 +86,7 @@ const AddDetail: FC<any> = () => {
         <>
             <IonPage>
                 <IonContent>
-                    <Title title="agregar periodo" back={true} />
+                    <Title title="agregar gasto" back={true} />
                     <br />
                     <IonRow>
                         <IonCol size="12">

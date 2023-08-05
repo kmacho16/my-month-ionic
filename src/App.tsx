@@ -29,6 +29,7 @@ import AddDetail from './pages/detail/addDetail/addDetail';
 import GraphDetails from './pages/detail/GraphDetails/GraphDetails';
 import { calendar, personCircle, playCircle } from 'ionicons/icons';
 import Settings from './pages/settings/Settings';
+import AddIncome from './pages/detail/AddIncome/AddIncome';
 
 setupIonicReact();
 
@@ -43,6 +44,7 @@ const App: React.FC = () => (
             <Route exact path="/add" render={() => <Add />} />
             <Route exact path="/settings" render={() => <Settings />} />
             <Route exact path="/detail/:id/add" render={() => <AddDetail />} />
+            <Route exact path="/detail/:id/income" render={() => <AddIncome />} />
             <Route exact path="/detail/:id" render={() => <Detail />} />
             <Route exact path="/detail/:id/graph" render={() => <GraphDetails />} />
             <Route exact path="/">
@@ -51,19 +53,22 @@ const App: React.FC = () => (
           </IonRouterOutlet>
         </IonReactRouter>
       </IonContent>
-      <IonFooter>
-          <IonRow>
-            <IonCol style={{ textAlign: 'center' }} className="circle">
-              lala
-            </IonCol>
-            <IonCol style={{ textAlign: 'center' }} className="circle2">
-              Lolo
-            </IonCol>
-          </IonRow>
-          <div className='btn'>
-            
-          </div>
-      </IonFooter>
+      {false && (
+ <IonFooter>
+ <IonRow>
+   <IonCol style={{ textAlign: 'center' }} className="circle">
+     lala
+   </IonCol>
+   <IonCol style={{ textAlign: 'center' }} className="circle2">
+     Lolo
+   </IonCol>
+ </IonRow>
+ <div className='btn'>
+   
+ </div>
+</IonFooter>
+      )}
+     
     </IonApp>
   </Provider>
 );

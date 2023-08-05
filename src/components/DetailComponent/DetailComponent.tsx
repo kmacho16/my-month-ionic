@@ -1,5 +1,5 @@
 import { IonAccordion, IonAccordionGroup, IonCard, IonCardContent, IonCardHeader, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonList, IonPopover, IonRow, useIonAlert } from "@ionic/react";
-import { alertCircleSharp, cardOutline, cartOutline, cashOutline, fastFood, fastFoodOutline, flowerOutline, homeSharp, informationCircle, pawSharp, pizzaOutline, settingsSharp, star, trailSignOutline, walletOutline } from "ionicons/icons";
+import { alertCircleSharp, cardOutline, cartOutline, cashOutline, cashSharp, fastFood, fastFoodOutline, flowerOutline, homeSharp, informationCircle, pawSharp, pizzaOutline, settingsSharp, star, trailSignOutline, walletOutline } from "ionicons/icons";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DetailItem from "../../interface/detailItem.interface";
@@ -28,6 +28,8 @@ const DetaillComponent: FC<{ item: DetailItem, maxSize: number, index: number }>
         'celeste': { styles: styles.celeste, icon: flowerOutline },
         'TC': { styles: styles.TC, },
         'restaurante': { styles: styles.restaurante, icon: fastFoodOutline },
+        'income': { styles: styles.income, icon: cashSharp },
+
     };
 
     return (

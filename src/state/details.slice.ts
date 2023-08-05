@@ -14,6 +14,7 @@ export interface State {
     credit:number,
     isClosed?:boolean,
     balance: number,
+    incomes: number,
     loaded: boolean
 }
 
@@ -23,6 +24,7 @@ const initialState: State ={
     expenses: 0,
     credit: 0,
     balance: 0,
+    incomes:0,
     details: []
 }
 
@@ -39,6 +41,7 @@ export const detailsSlice = createSlice({
             state.isClosed = action.payload.isClosed;
             state.credit = action.payload.credit;
             state.expenses = action.payload.expenses;
+            state.incomes = action.payload.incomes;
             state.balance = action.payload.balance;
         },
         callPostDetails: (state:State, action: PayloadAction<{id:string, body:any}>) => {},
