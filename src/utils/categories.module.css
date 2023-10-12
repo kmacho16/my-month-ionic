@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+.ocio {
+    background-color: #F76C27;
+    color: #b45323;
+}
+
+.obligaciones {
+    background-color: #EEE03E;
+    color: #a8902b;
+}
+
+.deudas {
+    background-color: #E73F3F;
+    color: #a82c2c;
+}
+
+.retiro {
+    background-color: #D592CB;
+    color: #814f7a;
+}
+.viajes {
+    background-color: #3aa25a;
+    color: #ffffff;
+}
+
+.hogar {
+    background-color: #6D9DD1;
+    color: #406996;
+}
+
+.mercado {
+    background-color: #F7469E;
+    color: #963666;
+}
+
+.otros {
+    background-color: #7E45D3;
+    color: #400f88;
+}
+
+.mascotas {
+    background-color: #CF5949;
+    color: #913f34;
+}
+
+.celeste {
+    background-color: #D580FD;
+    color: #b73cf0;
+
+}
+
+.TC {
+    background-color: #828484;
+}
+
+.restaurante {
+    background-color: #dee373;
+    color: #92964a;
+}
+
+.income {
+    background-color: #009111;
+    color: #ffffff;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+
+.precio {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.descripcion {
+    font-size: 10px;
+}
+
+.shape_circle {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: 25px;
+}
+.shape_circle ion-icon {
+    position:absolute;
+    top: 12px;
+    left: 13px;
+}
+
+.title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    margin-top: 5px;
+    color: black;
+}
+
+.category {
+    position: absolute;
+    top: 28px;
+}
+
+.date {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+.precio {
+    position: absolute;
+    right: 15px;
+    font-weight: bold;
+    color: black
+}
+.line{
+    padding-top: 20px;
+    position: absolute;
+    left: 28px;
+    top: 50px;
+    border-right: 2px dotted #8d6c6c;
+}
+
+.isCreditCard{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.description{
+    background: #eaeaea;
+    color: black;
+    font-weight: bold;
+}

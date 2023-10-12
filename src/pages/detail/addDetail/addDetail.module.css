@@ -3,31 +3,55 @@
     background-color: #cbcbcb;
     padding: 0.6rem;
 }
-.title span{
+
+.title span {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.2rem;
 }
-.title .back{
+
+.title .back {
     float: left;
     height: 22px;
     cursor: pointer;
 }
+
 .select {
     text-align: center;
     margin: auto;
 }
 
-.labelMonth{
+.labelMonth {
     text-transform: uppercase;
     font-weight: bold;
 }
 
-.saveBtn{
+.saveBtn {
     width: 100%;
     margin-top: 5rem;
 }
 
+.divToCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconSection {
+    border-radius: 50%;
+    margin-top: 10px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .colorRed .select-alert .sc-ion-alert-md {
     color: darkred !important;
+}
+
+.retiro {
+    background-color: #D592CB;
+    color: #814f7a;
 }

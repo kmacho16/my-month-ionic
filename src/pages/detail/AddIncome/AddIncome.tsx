@@ -28,7 +28,6 @@ const AddIncome = () => {
             title,
             description
         }
-        console.log("data",data);
         dispatch(callPostDetails({ id, body: data }));
         history.goBack();
     }

@@ -30,6 +30,7 @@ import GraphDetails from './pages/detail/GraphDetails/GraphDetails';
 import { calendar, personCircle, playCircle } from 'ionicons/icons';
 import Settings from './pages/settings/Settings';
 import AddIncome from './pages/detail/AddIncome/AddIncome';
+import Categories from './pages/categories/Categories';
 
 setupIonicReact();
 
@@ -43,6 +44,7 @@ const App: React.FC = () => (
             <Route exact path="/home" render={() => <Home />} />
             <Route exact path="/add" render={() => <Add />} />
             <Route exact path="/settings" render={() => <Settings />} />
+            <Route exact path="/categories" render={() => <Categories />} />
             <Route exact path="/detail/:id/add" render={() => <AddDetail />} />
             <Route exact path="/detail/:id/income" render={() => <AddIncome />} />
             <Route exact path="/detail/:id" render={() => <Detail />} />

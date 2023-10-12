@@ -13,6 +13,7 @@ const ListDetail: FC<{ items: DetailItem[] }> = ({ items }) => {
 
     useEffect(()=>{
     },[actualCat])
+    
 
     return (
         <>
